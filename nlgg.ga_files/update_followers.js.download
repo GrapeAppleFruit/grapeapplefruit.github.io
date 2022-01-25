@@ -1,0 +1,25 @@
+fetch('api/youtube')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('youtube_subs').innerHTML = data.subscriptionsText;
+    });
+
+fetch('api/twitter')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('twitter_subs').innerHTML = data.followersText;
+    });
+
+fetch('api/twitch')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('twitch_subs').innerHTML = data.followersText;
+    });
+
+fetch('api/youtube/latestvideo')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('youtube_embed').src = `https://www.youtube.com/embed/${data.id}`;
+        document.getElementById('youtube_viewcount').innerText = data.viewCountText;
+        document.getElementById('youtube_stamp').innerText = data.published;
+    });
